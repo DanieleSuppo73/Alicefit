@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset='utf-8' />
+    <title>Alicefit</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet/responsive.css">
+
+    <script src="https://cesiumjs.org/releases/1.63/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesiumjs.org/releases/1.63/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap" rel="stylesheet">
+
+    <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script> -->
+
+    <style>
+        .expandedPanel {
+            flex-grow: 3;
+        }
+
+
+        .svg-icon-hover {
+            filter: invert(100%) url(#blue);
+        }
+    </style>
+
+
+</head>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+    <defs>
+        <filter id="blue">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="
+                                  0 0 0 0 0
+                                  0 0.75 0 0 0
+                                  0 0 1 0 0
+                                  0 0 0 1 0 " />
+        </filter>
+        ...
+    </defs>
+</svg>
+
+
+
+
+<div id="wrapper">
+    <header style="display: flex; align-items: center; margin-left: 1vh; margin-right: 1vh;">
+
+        <img id="menuButton" src="images/icon_listMenu.svg" class="svg-icon" alt="list"
+            style="width: 3em; cursor: pointer;" onclick=onListButtonClick()>
+
+        <img id="main" src="images/icon_home.svg" class="svg-icon" alt="home" style="width: 3em; cursor: pointer; "
+            onclick=flyToHome()>
+
+        <div style="flex: 1">
+            <img src="images/icon_profile-default.svg" class="svg-icon vertical-center" alt="profile"
+                style="right: 0; width: 3em; cursor: pointer;" onclick=login()>
+        </div>
+    </header>
+
+
+
+    <!-- welcomePanel -->
+    <!-- <div id="welcomePanel" class="overlayPanel">
+        <div id="mapLoader" style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 50%; transform: translateY(-50%);">
+                <img src="images/mapLoadingSpinner.gif" alt="LOADING" style="display: block; margin-left: auto; margin-right: 
+                auto;">
+                <p class="UiLabel" style="text-align: center;">LOADING</p>
+        </div>
+    </div> -->
+
+
+    <!-- blackPanel -->
+    <div id="blackPanel" class="overlayPanel" style="top: 3em;">
+    </div>
+
+
+
+    <div id="page">
+
+        <!-- listPanel -->
+        <div id="panel1">
+        </div>
+
+
+        <!-- panel2 -->
+        <div id="panel2">
+            <div class="flexContainer flexVertical panelsPadding ">
+
+                <!-- panel2 > videoPlayerContainer -->
+                <div id="videoPlayerContainer" style="flex:1; position: relative;">
+                    <div class="flexContainer">
+                        <iframe id="videoPlayerIframe" src="about:blank" frameborder="0" width="100%" height="100%"
+                            webkitAllowFullScreen="1" mozallowfullscreen="1" allowFullScreen="1"
+                            scrolling="no"></iframe>
+                    </div>
+                </div>
+
+                <!-- panel2 > videoDetails -->
+                <div id="videoDetails" class="scroll" style="flex:1">
+
+                    <div style="flex-basis: 3em; margin-bottom: 1.5em;">
+                        <p id="videoTitle" style="font-size: x-large; font-weight: 400; margin-bottom: 0;">Title</p>
+                        <p id="videoDescription"
+                            style="font-size: small; font-weight: 500; margin-top: 1em; margin-bottom: 0;">
+                            Description</p>
+                    </div>
+
+                    <div style="border-bottom: 1px solid #b3b3b3"></div>
+
+                    <div style="display: flex">
+                        <div style="flex:1;">
+                            <p class="UiLabel">TRACK LENGTH</p>
+                            <p id="trackTotalDistance" style="display: inline; font-size:large">0</p>
+                            <p style="display: inline; font-size:small"> Km</p>
+                        </div>
+                        <div style="flex:1;">
+                            <p class="UiLabel">TRACK DURATION</p>
+                            <p id="trackTotalTime" style="display: inline; font-size:large">0</p>
+                            <p style="display: inline; font-size:small"> Mins</p>
+                        </div>
+                        <div style="flex:1;">
+                            <p class="UiLabel">AVERAGE SPEED</p>
+                            <p id="trackAverageSpeed" style="display: inline; font-size:large">0</p>
+                            <p style="display: inline; font-size:small"> Km/H</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="panel3">
+
+
+
+            <div id="CesiumContainer" class="inner">
+
+                <!-- welcomePanel -->
+                <div id="welcomePanel" class="overlayPanel" style="display: none;">
+                    <div id="mapLoader"
+                        style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 50%; transform: translateY(-50%);">
+                        <img src="images/mapLoadingSpinner.gif" alt="LOADING" style="display: block; margin-left: auto; margin-right: 
+                        auto;">
+                        <p class="UiLabel" style="text-align: center;">LOADING MAP</p>
+                    </div>
+                </div>
+
+                <!-- overlay label for assets -->
+                <p id="htmlOverlay" style="-webkit-text-stroke: 0.45px black; color: white; font-weight: 700; -webkit-font-smoothing: antialiased;
+                            -moz-osx-font-smoothing: grayscale; text-shadow: rgb(0, 0, 0) 0px 1px 1px; font-size: 16px;
+                            opacity: 1; position: absolute; z-index: 2; margin:0; display: none; width: 100px; text-align: center; cursor: pointer;
+                            ">Hello</p>
+
+                <div id="mapOverlay">
+
+
+                    <div style="width: 100%; height:100%; position: relative">
+                        <div style="position: absolute; right:0; top: 0; width: 2.5rem; height: 2.5rem;">
+                            <img id="cameraLinkToggle" src="images/icon_linked.svg"
+                                class="overlayButton opacity-70 center" style="width:100%; height: 100%; padding: 0;"
+                                onclick=cameraLinkToggle.setCamera()>
+                        </div>
+
+                        <a href="http://www.issimissimo.com/about" target="_blank" class="overlayButton" style="position: absolute; left: 0; bottom: 0; 
+                        color:white; font-size: small;">issimissimo.com</a>
+                    </div>
+
+
+                    <!-- mapNavigationToolbar -->
+                    <div id="mapNavigationToolbar">
+                        <img id="zoomIn" class="overlayButton mapNavigationButton" src="src/navigation/images/plus.svg"
+                            width="18rem">
+                        <img id="zoomOut" class="overlayButton mapNavigationButton"
+                            src="src/navigation/images/minus.svg" width="18rem">
+                        <img id="turnLeft" class="overlayButton mapNavigationButton"
+                            src="src/navigation/images/rotate.svg" width="18rem">
+                        <img id="turnRight" class="overlayButton mapNavigationButton"
+                            src="src/navigation/images/rotate.svg" width="18rem" style="transform: rotate(180deg);">
+                        <img id="turnUp" class="overlayButton mapNavigationButton"
+                            src="src/navigation/images/rotate.svg" width="18rem" style="transform: rotate(90deg);">
+                        <img id="turnDown" class="overlayButton mapNavigationButton"
+                            src="src/navigation/images/rotate.svg" width="18rem" style="transform: rotate(-90deg);">
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!-- the list, that is moved from #page (here)
+        to #panel1 -->
+            <div id="list" class="list-container_slide scroll">
+
+
+                <div id="aaa">
+
+                    <!-- item container -->
+                    <div id="list-item_container" class="list-item-style_container">
+
+                        <div id="list-divisor-event"
+                            style="padding-left: 0.8rem; padding-right: 0.8rem; display: none; align-items: center">
+                            <div style="background-color: #b3b3b3; flex: 1; width: 100%; height: 1px;">
+                            </div>
+                            <img class="icon" src="images/icon_star-outline.svg" width="50px">
+                            <div style="background-color: #b3b3b3; flex: 1; width: 100%; height: 1px;">
+                            </div>
+                        </div>
+
+                        <div id="list-divisor-default"
+                            style="padding-left: 0.8rem; padding-right: 0.8rem; display: none; align-items: center">
+                            <div style="background-color: #b3b3b3; flex: 1; width: 100%; height: 1px;">
+                            </div>
+                            <img class="icon" src="images/icon_video-outline.svg" width="30px">
+                            <div style="background-color: #b3b3b3; flex: 1; width: 100%; height: 1px;">
+                            </div>
+                        </div>
+
+
+                        <div id="list-item_event" class="list-item" onclick=onListWidgetClick(id)>
+                            <p class="list-item-title title"></p>
+                            <p class="list-item-description subtitle"></p>
+                        </div>
+
+
+                        <div id="list-item_video" class="list-item" onclick=onListWidgetClick(id)>
+                            <div style="position: relative; margin-bottom: 0.5rem;">
+                                <img class="list-item-poster" src='data/poster/default.jpg' width="100%" height="100%">
+                                <img src='images/icon_360.png' class="center icon" width="50em">
+                                <div class="list-poster-frame"></div>
+                            </div>
+                            <p class="list-item-title title"></p>
+                            <p class="list-item-description subtitle"></p>
+                        </div>
+
+
+                        <!-- <div id="list-item_track" class="list-item" onclick=onListWidgetClick(id)>
+                        <img class="list-item-icon" src="images/track.svg" alt="icon" width="30px" height="30px">
+                        <p class="list-item-title" style="margin: 0; font-weight: 700;">Title</p>
+                        <p class="list-item-description" style="margin: 0;">Subtitle</p>
+                    </div> -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <script src="src/logger/logger.js"></script>
+    <script src="src/controller.js"></script>
+    <script src="src/mapController.js"></script>
+
+    <script type="text/javascript" src="//cdn.omnivirt.com/scripts/embed.js"></script>
+    <script src="src/videoPlayer.js"></script>
+    <script src="src/videoMarkers.js"></script>
+    <script src="src/trackManager.js"></script>
+
+    <script src="src/loader.js"></script>
+    <script src="src/gpxParser.js"></script>
+    <script src="src/navigation/navigation.js"></script>
+    <!-- <script src="src/mapCityLabels.js"></script> -->
+    <script src="src/welcome.js"></script>
+
+
+    </body>
+
+</html>

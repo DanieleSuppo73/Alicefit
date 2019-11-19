@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <objType>video</objType>
+    <userName>Admin</userName>
+    <title>JeepCamp Video1</title>
+    <description></description>
+    <date>Fry Oct 18 2019</date>
+    <location></location>
+    <videoUrl>42939</videoUrl>
+    <poster>jeepcamp1.jpg</poster>
+    <id>1570364355247</id>
+    <videoMarkers>jeepcampvideo1.xml</videoMarkers>
+</root>

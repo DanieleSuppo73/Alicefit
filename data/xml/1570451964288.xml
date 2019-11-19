@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <objType>video</objType>
+    <userName>Daniele</userName>
+    <title>Le strade di Coppi</title>
+    <description>A bicycle tour on the streets where the bicycle champion Fausto Coppi was used to train</description>
+    <date>Thu Sep 26 2019</date>
+    <location>Castellania Coppi (AL) Italy</location>
+    <videoUrl>43236</videoUrl>
+    <poster>coppi.jpg</poster>
+    <id>1571313244130</id>
+    <id>1571313271465</id>
+    <id>1571313279009</id>
+    <videoMarkers>coppivideo.xml</videoMarkers>
+</root>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <objType>event</objType>
+    <userName>Daniele</userName>
+    <title>Tour Venezia</title>
+    <description>Bicycle tours on the most beautiful and inhexplorated islands of Venice</description>
+    <date>Fry Nov 15 2019</date>
+    <!-- <location>Venice Italy</location>
+    <from>Fry Jul 12 2019</from>
+    <to>Sun Jul 14 2019</to> -->
+    <id>1573827851085</id>
+    <id>1573827877573</id>
+</root>

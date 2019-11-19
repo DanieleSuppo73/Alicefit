@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <objType>video</objType>
+    <userName>Daniele</userName>
+    <title>Lido e Pellestrina</title>
+    <description></description>
+    <date></date>
+    <location></location>
+    <videoUrl>41747</videoUrl>
+    <poster>lidoPellestrina.jpg</poster>
+    
+    <videoMarkers>lidopellestrinavideo.xml</videoMarkers>
+</root>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <objType>video</objType>
+    <userName>Daniele</userName>
+    <title>Lio Piccolo</title>
+    <description></description>
+    <date></date>
+    <location></location>
+    <videoUrl>43237</videoUrl>
+    <poster>lioPiccolo.jpg</poster>
+    
+    <videoMarkers>liopiccolovideo.xml</videoMarkers>
+</root>

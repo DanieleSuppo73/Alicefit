@@ -1,0 +1,22 @@
+<MAIN>
+    <VIDEO_URL>https://player.vimeo.com/external/347803220.m3u8?s=61a66fd483813c89da138ac578628ca68bb65fe3</VIDEO_URL>
+    <VIDEO_MARKERS_URL>data/Alessandria/markers.xml</VIDEO_MARKERS_URL>
+    <TITLE>Sulle strade di Coppi</TITLE>
+    <SUBTITLE>Un tour 360 guidato da Stefano Guatelli - www.ebikeawareness.com</SUBTITLE>
+    <POSTER_IMAGE>data/Alessandria/poster.jpg</POSTER_IMAGE>
+    <subtitlesItUrl>https://vr.alicefit.com/_assets/Alessandria/Alessandria_subtitles.xml</subtitlesItUrl>
+    <subtitlesEnUrl>https://vr.alicefit.com/_assets/Alessandria/Alessandria_subtitles.xml</subtitlesEnUrl>
+
+    <GPX>
+        <GPX_URL>https://vr.alicefit.com/_assets/gps/Alessandria_20190620152931.gpx</GPX_URL>
+        <GPX_NAME>Da Cerreto Grue al Belvedere della chiesa di San Paolo</GPX_NAME>
+    </GPX>
+    <GPX>
+        <GPX_URL>https://vr.alicefit.com/_assets/gps/Alessandria_20190620143007.gpx</GPX_URL>
+        <GPX_NAME>Da Passo Coppi a Castellania Coppi</GPX_NAME>
+    </GPX>
+    <GPX>
+        <GPX_URL>https://vr.alicefit.com/_assets/gps/Alessandria_20190620161704.gpx</GPX_URL>
+        <GPX_NAME>La pista ciclabile dedicata a Fausto e Serse e Coppi</GPX_NAME>
+    </GPX>
+</MAIN>

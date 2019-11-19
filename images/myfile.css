@@ -1,0 +1,11 @@
+#svg2 {
+    width: 64px; height: 64px;
+    transform: scale(4);
+}
+path:hover {
+    fill: rgb(29, 159, 211) !IMPORTANT;
+}
+
+.test{
+    fill: rgb(29, 159, 211) !IMPORTANT;
+}
