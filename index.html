@@ -15,9 +15,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400&display=swap" rel="stylesheet">
 
     <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script> -->
@@ -54,6 +56,27 @@
 
 
 <div id="wrapper">
+
+    <!-- welcomePanel -->
+    <div id="welcomePanel" class="overlayPanel"
+        style="background-image: url('images/welcomeBackground.jpg'); background-position: center; z-index: 99;">
+        <div
+            style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 50%; transform: translateY(-50%);">
+            <h2 style="text-align: center;"> Welcome to </h2>
+            <h1 style="text-align: center; "> Alicefit° </h1>
+            <h3 style="text-align: center; margin-left: 10%; margin-right: 10%;">
+                Alicefit is the most innovative way to show your adventures.<br>
+                With a full 3d map gps positioning and a reliable content delivery system we give you the best
+                experience.
+            </h3>
+            <div style="display: flex; justify-content: center;">
+                <p class="myButton" onclick="hideWelcomePanel()">Show map</button>
+            </div>
+
+        </div>
+    </div>
+
+
     <header style="display: flex; align-items: center; margin-left: 1vh; margin-right: 1vh;">
 
         <img id="menuButton" src="images/icon_listMenu.svg" class="svg-icon" alt="list"
@@ -70,14 +93,7 @@
 
 
 
-    <!-- welcomePanel -->
-    <!-- <div id="welcomePanel" class="overlayPanel">
-        <div id="mapLoader" style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 50%; transform: translateY(-50%);">
-                <img src="images/mapLoadingSpinner.gif" alt="LOADING" style="display: block; margin-left: auto; margin-right: 
-                auto;">
-                <p class="UiLabel" style="text-align: center;">LOADING</p>
-        </div>
-    </div> -->
+
 
 
     <!-- blackPanel -->
@@ -147,15 +163,18 @@
 
             <div id="CesiumContainer" class="inner">
 
-                <!-- welcomePanel -->
-                <div id="welcomePanel" class="overlayPanel" style="display: none;">
-                    <div id="mapLoader"
+
+                <!-- mapLoader -->
+                <div id="mapLoader" class="overlayPanel" style="display: none; background: white;">
+                    <div
                         style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 50%; transform: translateY(-50%);">
                         <img src="images/mapLoadingSpinner.gif" alt="LOADING" style="display: block; margin-left: auto; margin-right: 
-                        auto;">
+                            auto;">
                         <p id="mapLoaderIndicator" class="UiLabel" style="text-align: center;">0 %</p>
                     </div>
                 </div>
+
+
 
                 <!-- overlay label for assets -->
                 <p id="htmlOverlay" style="-webkit-text-stroke: 0.45px black; color: white; font-weight: 700; -webkit-font-smoothing: antialiased;
@@ -235,21 +254,23 @@
 
 
                         <div id="list-item_video" class="list-item" onclick=onListWidgetClick(id)>
-                            <div style="position: relative; margin-bottom: 0.5rem;">
-                                <img class="list-item-poster" src='data/poster/default.jpg' width="100%" height="100%">
-                                <img src='images/icon_360.png' class="center icon" width="50em">
-                                <div class="list-poster-frame"></div>
+                            <div style="display: flex;">
+                                <div style="position: relative; margin-bottom: 0.5rem; flex: 1">
+                                    <img class="list-item-poster" src='data/poster/default.jpg' width="100%"
+                                        height="100%">
+                                    <img src='images/icon_360.png' class="center icon" width="50em">
+                                    <div class="list-poster-frame"></div>
+                                </div>
+                                <div style="flex: 0.7; padding-left: 10px">
+                                    <p class="list-item-title title"></p>
+                                    <p class="list-item-description subtitle"></p>
+                                </div>
                             </div>
-                            <p class="list-item-title title"></p>
-                            <p class="list-item-description subtitle"></p>
                         </div>
 
+                        
 
-                        <!-- <div id="list-item_track" class="list-item" onclick=onListWidgetClick(id)>
-                        <img class="list-item-icon" src="images/track.svg" alt="icon" width="30px" height="30px">
-                        <p class="list-item-title" style="margin: 0; font-weight: 700;">Title</p>
-                        <p class="list-item-description" style="margin: 0;">Subtitle</p>
-                    </div> -->
+                        
 
                     </div>
 
@@ -265,6 +286,7 @@
 
     <script src="src/logger/logger.js"></script>
     <script src="src/controller.js"></script>
+
     <script src="src/mapController.js"></script>
 
     <script type="text/javascript" src="//cdn.omnivirt.com/scripts/embed.js"></script>
@@ -275,8 +297,10 @@
     <script src="src/loader.js"></script>
     <script src="src/gpxParser.js"></script>
     <script src="src/navigation/navigation.js"></script>
-    <!-- <script src="src/mapCityLabels.js"></script> -->
-    <script src="src/welcome.js"></script>
+
+    <script src="src/welcome.js"></script> 
+
+    <script src="src/mapCityLabels.js"></script>
 
 
     </body>

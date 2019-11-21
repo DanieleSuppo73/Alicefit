@@ -1,6 +1,13 @@
 
+function hideWelcomePanel(){
+    $(document).ready(function(){
+        $("#welcomePanel").fadeOut();
+    });
+}
+
+
 const mapLoader = {
-    minProgress: 10, /// change only this for min requested tiles
+    minProgress: 20, /// change only this for min requested tiles
     maxProgress: 0,
     isProgressing: false,
 
@@ -16,7 +23,6 @@ const mapLoader = {
             /// get the progress in percentage
             if (mapLoader.isProgressing) {
                 let mapLoadingPercent = (100 - (valProgress / mapLoader.maxProgress * 100)).toFixed(0);
-                // console.log('map loading : ' + mapLoadingPercent + '%');
                 $("#mapLoaderIndicator").text(mapLoadingPercent + '%');
             }
         }
@@ -26,11 +32,11 @@ const mapLoader = {
     },
 
     showLoader: () => {
-        $("#welcomePanel").css('display', 'block');
+        $("#mapLoader").css('display', 'block');
     },
 
     hideLoader: () => {
-        $("#welcomePanel").fadeOut();
+        $("#mapLoader").fadeOut();
     },
 }
 

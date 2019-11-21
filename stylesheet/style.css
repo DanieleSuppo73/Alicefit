@@ -1,17 +1,17 @@
 * {
-    
-    /* font-family: Roboto , sans-serif; */
-    font-family: 'Source Sans Pro', sans-serif;
+
+    font-family: Roboto, sans-serif;
+    /* font-family: 'Source Sans Pro', sans-serif; */
     /* font-family: 'Lato', sans-serif; */
-        /* font-family: -apple-system, BlinkMacSystemFont,
+    /* font-family: -apple-system, BlinkMacSystemFont,
                 "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
                 "Fira Sans", "Droid Sans", "Helvetica Neue",
                 sans-serif;
             font-weight: 700; */
 
-        
-    
-            
+
+
+
 }
 
 html,
@@ -21,7 +21,44 @@ body,
     height: 100%;
     width: 100%;
     margin: 0;
+
 }
+
+
+h1 {
+    font-size: 55px;
+    font-family: Quicksand, sans-serif; 
+    color: white; 
+    font-weight: 400; 
+    margin:0
+}
+h2 {
+    font-size: 36px;
+    font-family: Quicksand;
+    font-weight: 300;
+    color: white;
+    margin:0
+}
+h3 {
+    font-size: 15px;
+    line-height: 1.7;
+    font-family: 'Open Sans';
+    color: white;
+    font-weight: 300;
+}
+
+.myButton {
+    background-color:rgb(3, 127, 168);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
 
 
 
@@ -135,7 +172,7 @@ header {
 
 
 #panel1 {
-    flex-basis: 15em;
+    flex-basis: 20em;
     position: relative;
     /* display: none; */
     margin-left: 0.9rem;
@@ -176,13 +213,11 @@ header {
     bottom: 0;
     z-index: 5;
 }
+
 #blackPanel {
     background: black;
     opacity: 0;
     pointer-events: none
-}
-#welcomePanel {
-    background: white;
 }
 
 
@@ -218,7 +253,8 @@ header {
     display: flex;
     flex-direction: column;
     position: absolute;
-    right: 0; bottom: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(255, 255, 255, 0.7);
     align-items: center;
     padding: 0.1rem;
@@ -226,6 +262,7 @@ header {
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
 }
+
 .mapNavigationButton {
     opacity: 0.7;
     padding: 0.2rem;
@@ -265,7 +302,8 @@ header {
 
 
 .list-item-style_container {
-    width: 30em; /*dont remove! it's just for slide. Give it any number... */
+    width: 30em;
+    /*dont remove! it's just for slide. Give it any number... */
     margin-bottom: 1.5vh;
     display: none;
 }
@@ -281,7 +319,7 @@ header {
 }
 
 
-.list-item-selected > p {
+.list-item-selected>p {
     color: deepskyblue !important;
 }
 
@@ -290,18 +328,22 @@ header {
 }
 
 .list-item-title {
-    margin: 0; 
-    font-weight: 700; 
-    font-size: large;
+    margin: 0;
+    font-weight: 500;
+    font-size: 15px;
     /* color:#2a2a2a; */
 }
 
 
 .list-item-description {
     margin: 0;
-    padding-top: 0.5em;
+    padding-top: 0.2em;
+    font-size: 13px;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.2;
+    font-weight: 700;
     /* font-size: small; */
-    color: #787878;
+    color: #595959;
 }
 
 
@@ -319,11 +361,11 @@ header {
 
 .list-poster-frame {
     position: absolute !important;
-    left:0;
-    top:0;
-    right:0;
-    bottom:0;
-    
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
 }
 
 .list-poster-frame-selected {
